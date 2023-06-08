@@ -33,6 +33,14 @@ jobs:
           -v "$GITHUB_WORKSPACE/pages_repo/site.toml:/app/loconotion/site.toml" \
           loconotion "site.toml"
         working-directory: loconotion
+
+      - name: Add CNAME
+        uses: "DamianReeves/write-file-action@master"
+        with:
+          path: ./CNAME
+          write-mode: overwrite
+          contents: gustavo.codes
+          
       - name: Push to GitHub pages
         run: |
           git config --global user.name "github-actions[bot]"
